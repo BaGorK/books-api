@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js",
-    "build": "tsc"
+    "build": "tsc",
+    "setup-production-app": "npm install && npx tsc"
   },
   "dependencies": {
     "cors": "^2.8.5",
