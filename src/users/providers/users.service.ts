@@ -1,4 +1,4 @@
-import { UserDto } from '../dtos/user.dto';
+import { RoleEnum, UserDto } from '../dtos/user.dto';
 import { User } from '../entities/User';
 import { UsersRepository } from './users.repository';
 
@@ -12,7 +12,7 @@ export class UsersService {
       userDto.email,
       userDto.password,
       userDto.passwordConfirm,
-      userDto.role
+      userDto.role || RoleEnum.USER
     );
 
     const newUser = await this.userRepository.create(user);

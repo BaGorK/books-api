@@ -1,3 +1,5 @@
+import { RoleEnum } from '../dtos/user.dto';
+
 export class User {
   constructor(
     public id: string,
@@ -5,6 +7,6 @@ export class User {
     public email: string,
     public password: string,
     public passwordConfirm: string,
-    public role?: string
+    public role: RoleEnum
   ) {}
 }
