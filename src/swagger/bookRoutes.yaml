@@ -1,0 +1,184 @@
+openapi: 3.0.0
+tags:
+  - name: Books
+    description: Book-related operations
+
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      summary: Get all books
+      description: Retrieve all books in the database. Restricted to admin users.
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successfully retrieved all books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        500:
+          description: Internal server error
+    post:
+      tags:
+        - Books
+      summary: Create a book
+      description: Add a new book to the database. Restricted to user role.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        201:
+          description: Book created successfully
+        500:
+          description: Internal server error
+
+  /books/favorite:
+    get:
+      tags:
+        - Books
+      summary: Get favorite books
+      description: Retrieve the list of favorite books for the authenticated user.
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successfully retrieved favorite books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        500:
+          description: Internal server error
+
+  /books/{id}:
+    get:
+      tags:
+        - Books
+      summary: Get book by ID
+      description: Retrieve a specific book by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the book to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successfully retrieved book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        404:
+          description: Book not found
+    put:
+      tags:
+        - Books
+      summary: Update book by ID
+      description: Update the details of a book by its ID. Restricted to user role.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the book to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        200:
+          description: Book updated successfully
+        404:
+          description: Book not found
+        500:
+          description: Internal server error
+    delete:
+      tags:
+        - Books
+      summary: Delete book by ID
+      description: Remove a book from the database by its ID. Restricted to user and admin roles.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the book to delete
+          schema:
+            type: string
+      responses:
+        200:
+          description: Book deleted successfully
+        404:
+          description: Book not found
+        500:
+          description: Internal server error
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the book
+        title:
+          type: string
+          description: Title of the book
+        author:
+          type: string
+          description: Author of the book
+        isbn:
+          type: string
+          description: ISBN of the book
+        publicationYear:
+          type: integer
+          description: Year the book was published
+        createdAt:
+          type: string
+          format: date-time
+          description: Date the book was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date the book was last updated
+    BookInput:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the book
+        author:
+          type: string
+          description: Author of the book
+        isbn:
+          type: string
+          description: ISBN of the book
+        publicationYear:
+          type: integer
+          description: Year the book was published
