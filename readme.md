@@ -1,3 +1,8 @@
+
+[![wakatime](https://wakatime.com/badge/user/466107a4-383a-433a-a72d-93aa58acf054/project/a3bd01b0-06b0-4cca-b1a2-13fe8e82dc96.svg)](https://wakatime.com/badge/user/466107a4-383a-433a-a72d-93aa58acf054/project/a3bd01b0-06b0-4cca-b1a2-13fe8e82dc96)
+
+[API documentation](https://books-api-dll3.onrender.com/api-docs/)
+
 # Books API
 
 This is a **Books API** project for managing books, developed as part of the Stage Two Backend Track project. It is built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.
@@ -10,6 +15,12 @@ This is a **Books API** project for managing books, developed as part of the Sta
 - **Update a book**
 - **Delete a book**
 - **Retrieve My favorite book**
+- **Get all users**
+- **Get a user by ID**
+- **Update a user**
+- **Delete User**
+- **Signup**
+- **Login**
 
 ## Requirements
 
