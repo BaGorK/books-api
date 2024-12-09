@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { bookRoutes } from './books/books.route';
 import { userRoutes } from './users/users.route';
 import { authRoutes } from './auth/auth.routes';
+import { setupSwagger } from './swaggerConfig';
 
 export function createApp() {
   const app = express();
@@ -28,6 +29,9 @@ export function createApp() {
   app.use('/api/v1/books', bookRoutes);
   app.use('/api/v1/users', userRoutes);
   app.use('/api/v1/auth', authRoutes);
+
+  // Setup Swagger
+  setupSwagger(app);
 
   app.all('*', (req: Request, res: Response) => {
     res.status(404).json({

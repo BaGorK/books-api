@@ -1,6 +1,6 @@
 import { IUserRepository } from '../interfaces/IUserRepository';
 import { UserModel } from '../users.model';
-import { User } from '../entities/User';
+import { User } from '../entities/user.entity';
 
 export class UsersRepository implements IUserRepository {
   async create(user: User): Promise<User> {

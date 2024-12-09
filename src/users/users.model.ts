@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { User } from './entities/User';
+import { User } from './entities/user.entity';
 import { RoleEnum } from './dtos/user.dto';
 import bcrypt from 'bcryptjs';
 
