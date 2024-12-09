@@ -1,6 +1,6 @@
 import express from 'express';
-import { BooksRepository } from './books.repository';
-import { BooksService } from './books.service';
+import { BooksRepository } from './providers/books.repository';
+import { BooksService } from './providers/books.service';
 import { BooksController } from './books.controller';
 
 const booksRepository = new BooksRepository();

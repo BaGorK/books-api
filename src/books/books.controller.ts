@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BooksService } from './books.service';
+import { BooksService } from './providers/books.service';
 import { BookDto } from './dtos/book.dot';
 
 export class BooksController {
@@ -10,6 +10,19 @@ export class BooksController {
 
     try {
       const bookDto: BookDto = req.body;
+
+      if (
+        !bookDto.author ||
+        !bookDto.isbn ||
+        !bookDto.publicationYear ||
+        !bookDto.title
+      ) {
+        res.status(400).json({
+          status: 'fail',
+          message:
+            'Please provide all required fields, author, isbn, publicationYear, title',
+        });
+      }
 
       const book = await this.booksService.createBook(bookDto);
 

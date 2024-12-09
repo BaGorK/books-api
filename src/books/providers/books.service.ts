@@ -1,12 +1,12 @@
 import { BooksRepository } from './books.repository';
-import { BookDto } from './dtos/book.dot';
-import { Book } from './entities/Book';
+import { BookDto } from '../dtos/book.dot';
+import { Book } from '../entities/Book';
 
 export class BooksService {
   constructor(private booksRepository: BooksRepository) {}
 
   async createBook(bookDto: BookDto): Promise<Book> {
-    if (!this.validatePublicationYear(bookDto.publicationYear.toString())) {
+    if (!this.validatePublicationYear(bookDto.publicationYear?.toString())) {
       throw new Error('Please Provide a valid publication year');
     }
     const book = new Book(

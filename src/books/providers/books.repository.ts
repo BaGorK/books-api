@@ -1,6 +1,6 @@
-import { BookModel, IBookModel } from './books.model';
-import { Book } from './entities/Book';
-import { IBookRepository } from './interfaces/IBookRepository';
+import { BookModel, IBookModel } from '../books.model';
+import { Book } from '../entities/Book';
+import { IBookRepository } from '../interfaces/IBookRepository';
 
 export class BooksRepository implements IBookRepository {
   async create(book: Book): Promise<Book> {
