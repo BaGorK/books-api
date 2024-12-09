@@ -146,12 +146,20 @@ export class UsersController {
       throw new Error('Please provide a fullName');
     }
 
-    if (!userDto.role) {
-      throw new Error('Please provide a role');
+    if (userDto.role && !Object.values(RoleEnum).includes(userDto.role)) {
+      throw new Error('Invalid role');
     }
 
-    if (!Object.values(RoleEnum).includes(userDto.role)) {
-      throw new Error('Invalid role');
+    if (!userDto.password) {
+      throw new Error('Please provide a password');
+    }
+
+    if (!userDto.passwordConfirm) {
+      throw new Error('Please provide a password confirmation');
+    }
+
+    if (userDto.password !== userDto.passwordConfirm) {
+      throw new Error('Passwords do not match');
     }
   }
 }

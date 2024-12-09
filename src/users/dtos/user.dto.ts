@@ -8,7 +8,9 @@ export interface UserDto {
 
   fullName: string;
   email: string;
-  role: RoleEnum;
+  password: string;
+  passwordConfirm: string;
+  role?: RoleEnum;
 
   createdAt?: Date;
   updatedAt?: Date;

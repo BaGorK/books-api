@@ -48,6 +48,8 @@ export class UsersRepository implements IUserRepository {
       userModel._id.toString(),
       userModel.fullName,
       userModel.email,
+      userModel.password,
+      userModel.passwordConfirm,
       userModel.role
     );
   }

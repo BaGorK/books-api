@@ -3,6 +3,8 @@ export class User {
     public id: string,
     public fullName: string,
     public email: string,
-    public role: string
+    public password: string,
+    public passwordConfirm: string,
+    public role?: string
   ) {}
 }

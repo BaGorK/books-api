@@ -10,6 +10,8 @@ export class UsersService {
       userDto.id || '',
       userDto.fullName,
       userDto.email,
+      userDto.password,
+      userDto.passwordConfirm,
       userDto.role
     );
 
