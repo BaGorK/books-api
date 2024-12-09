@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { Book } from './entities/Book';
+import { Book } from './entities/book.entity';
 
 export interface IBookModel extends Omit<Book, 'id'>, Document {
   _id: mongoose.Types.ObjectId;

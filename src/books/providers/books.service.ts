@@ -1,6 +1,6 @@
 import { BooksRepository } from './books.repository';
 import { BookDto } from '../dtos/book.dto';
-import { Book } from '../entities/Book';
+import { Book } from '../entities/book.entity';
 
 export class BooksService {
   constructor(private booksRepository: BooksRepository) {}

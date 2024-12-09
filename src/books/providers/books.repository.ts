@@ -1,5 +1,5 @@
 import { BookModel, IBookModel } from '../books.model';
-import { Book } from '../entities/Book';
+import { Book } from '../entities/book.entity';
 import { IBookRepository } from '../interfaces/IBookRepository';
 
 export class BooksRepository implements IBookRepository {

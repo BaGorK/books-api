@@ -15,7 +15,9 @@ router.use(AuthController.protect);
 
 router
   .route('/')
-  .get((req, res) => booksController.getAllBook(req, res))
+  .get(AuthController.restrictTo(RoleEnum.ADMIN), (req, res) =>
+    booksController.getAllBook(req, res)
+  )
   .post(AuthController.restrictTo(RoleEnum.USER), (req, res) =>
     booksController.createBook(req, res)
   );
@@ -30,6 +32,9 @@ router
   .put(AuthController.restrictTo(RoleEnum.USER), (req, res) =>
     booksController.updateBook(req, res)
   )
-  .delete(AuthController.restrictTo(RoleEnum.USER, RoleEnum.ADMIN), (req, res) => booksController.deleteBook(req, res));
+  .delete(
+    AuthController.restrictTo(RoleEnum.USER, RoleEnum.ADMIN),
+    (req, res) => booksController.deleteBook(req, res)
+  );
 
 export const bookRoutes = router;
