@@ -1,5 +1,5 @@
 import { BooksRepository } from './books.repository';
-import { BookDto } from '../dtos/book.dot';
+import { BookDto } from '../dtos/book.dto';
 import { Book } from '../entities/Book';
 
 export class BooksService {

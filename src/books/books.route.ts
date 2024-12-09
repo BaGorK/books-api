@@ -24,4 +24,4 @@ router
   .put((req, res) => booksController.updateBook(req, res))
   .delete((req, res) => booksController.deleteBook(req, res));
 
-export const booksRoutes = router;
+export const bookRoutes = router;

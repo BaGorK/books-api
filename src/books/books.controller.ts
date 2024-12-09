@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { BooksService } from './providers/books.service';
-import { BookDto } from './dtos/book.dot';
+import { BookDto } from './dtos/book.dto';
 
 export class BooksController {
   constructor(private booksService: BooksService) {}
@@ -22,6 +22,7 @@ export class BooksController {
           message:
             'Please provide all required fields, author, isbn, publicationYear, title',
         });
+        return;
       }
 
       const book = await this.booksService.createBook(bookDto);
