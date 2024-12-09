@@ -1,13 +1,16 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { bookRoutes } from './books/books.route';
 import { userRoutes } from './users/users.route';
+import { authRoutes } from './auth/auth.routes';
 
 export function createApp() {
   const app = express();
 
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
   app.use('/api/docs', (req, res) => {
     res.status(200).json({
@@ -24,6 +27,7 @@ export function createApp() {
 
   app.use('/api/v1/books', bookRoutes);
   app.use('/api/v1/users', userRoutes);
+  app.use('/api/v1/auth', authRoutes);
 
   app.all('*', (req: Request, res: Response) => {
     res.status(404).json({
