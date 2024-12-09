@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { booksRoutes } from './books/books.route';
+import { bookRoutes } from './books/books.route';
+import { userRoutes } from './users/users.route';
 
 export function createApp() {
   const app = express();
@@ -8,9 +9,7 @@ export function createApp() {
   app.use(express.json());
   app.use(cors());
 
-  app.use('/api/v1/books', booksRoutes);
-
-  app.use('/api', (req, res) => {
+  app.use('/api/docs', (req, res) => {
     res.status(200).json({
       hello: "Hello... Welcome, I'm Edmealem",
       message: 'send a request to /api/v1/books',
@@ -22,6 +21,9 @@ export function createApp() {
       Favorite: '/api/v1/books/favorite => to get favorite books',
     });
   });
+
+  app.use('/api/v1/books', bookRoutes);
+  app.use('/api/v1/users', userRoutes);
 
   app.all('*', (req: Request, res: Response) => {
     res.status(404).json({
