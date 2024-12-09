@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { RoleEnum, UserDto } from './../users/dtos/user.dto';
 import { AuthService } from './auth.service';
-import { User } from './../users/entities/User';
+import { User } from '../users/entities/user.entity';
 import { UserModel } from './../users/users.model';
 import { isCorrectPassword } from './../lib/utils/password.util';
 import { createJWT, verifyJWT } from './../lib/utils/token.util';

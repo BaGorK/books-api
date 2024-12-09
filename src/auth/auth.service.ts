@@ -1,5 +1,5 @@
 import { RoleEnum, UserDto } from './../users/dtos/user.dto';
-import { User } from './../users/entities/User';
+import { User } from '../users/entities/user.entity';
 import { UsersRepository } from './../users/providers/users.repository';
 
 export class AuthService {
